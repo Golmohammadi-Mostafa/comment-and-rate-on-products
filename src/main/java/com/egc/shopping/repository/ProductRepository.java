@@ -20,8 +20,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByPriceBetween(Double from, Double to);
 
-//    @EntityGraph(attributePaths = {"comments", "rates"}, type = EntityGraph.EntityGraphType.FETCH)
-//    List<Product> findAll();
+    @EntityGraph(value = "Product.full", type = EntityGraph.EntityGraphType.FETCH)
+    List<Product> findAll();
 
     @EntityGraph(attributePaths = {"comments", "rates"}, type = EntityGraph.EntityGraphType.FETCH)
     Optional<Product> findById(Long id);

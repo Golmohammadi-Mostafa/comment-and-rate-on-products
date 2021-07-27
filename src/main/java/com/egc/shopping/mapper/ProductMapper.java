@@ -25,9 +25,9 @@ public interface ProductMapper {
             productDTO.setId(p.getId());
             productDTO.setName(p.getName());
             productDTO.setPrice(p.getPrice());
-            productDTO.setCategory(p.getCategory());
-            productDTO.setComments(p.getComments());
-            productDTO.setRates(p.getRates());
+//            productDTO.setCategory(p.getCategory());
+//            productDTO.setComments(p.getComments());
+//            productDTO.setRates(p.getRates());
             productDTOS.add(productDTO);
         });
 
