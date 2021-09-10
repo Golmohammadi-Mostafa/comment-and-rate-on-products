@@ -1,15 +1,15 @@
 package com.egc.shopping.service;
 
+import com.egc.shopping.dto.JwtTokenDTO;
 import com.egc.shopping.dto.SingUpDTO;
-
 import com.egc.shopping.dto.UserResponseDTO;
 
 import javax.servlet.http.HttpServletRequest;
 
 public interface UserService {
-    String signIn(String username, String password);
+    JwtTokenDTO signIn(String username, String password);
 
-    String signUp(SingUpDTO dto);
+    JwtTokenDTO signUp(SingUpDTO dto);
 
     void delete(String username);
 
@@ -17,5 +17,7 @@ public interface UserService {
 
     UserResponseDTO whoAmI(HttpServletRequest req);
 
-    String refresh(String username);
+    JwtTokenDTO refresh(String username);
+
+    void deleteAllUsers();
 }

@@ -1,5 +1,6 @@
 package com.egc.shopping.rest;
 
+import com.egc.shopping.dto.JwtTokenDTO;
 import com.egc.shopping.dto.SingUpDTO;
 import com.egc.shopping.dto.UserResponseDTO;
 import com.egc.shopping.service.UserService;
@@ -25,13 +26,13 @@ public class UserResource {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<String> login(@ApiParam("Username") @RequestParam String username,
-                                        @ApiParam("Password") @RequestParam String password) {
+    public ResponseEntity<JwtTokenDTO> login(@ApiParam("Username") @RequestParam String username,
+                                             @ApiParam("Password") @RequestParam String password) {
         return ResponseEntity.ok(userService.signIn(username, password));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signUp(@ApiParam("Signup User") @RequestBody SingUpDTO user) {
+    public ResponseEntity<JwtTokenDTO> signUp(@ApiParam("Signup User") @RequestBody SingUpDTO user) {
         return ResponseEntity.ok(userService.signUp(user));
     }
 
@@ -56,7 +57,7 @@ public class UserResource {
 
     @GetMapping("/refresh")
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-    public String refresh(HttpServletRequest req) {
+    public JwtTokenDTO refresh(HttpServletRequest req) {
         return userService.refresh(req.getRemoteUser());
     }
 
